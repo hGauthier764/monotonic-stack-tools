@@ -30,3 +30,10 @@ Non-integer `k` is rejected with a `TypeError`; a fractional window length has n
 - `slidingWindowMax(nums: number[], k: number): number[]`
 
 Both are re-exported from `src/index.js`; the implementations live in `src/core.js`.
+
+## Performance
+
+The window keeps a bounded buffer, so `push` is constant time and memory does not
+grow with the length of the stream. `peak` and `trough` are linear in the window
+size, which is the trade that keeps `push` cheap.
+
